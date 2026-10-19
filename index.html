@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Productivity Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app">
+
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1>TaskFlow <span>✓</span></h1>
+                <p>Plan your day. Get things done.</p>
+            </div>
+            <button id="themeBtn" class="theme-btn" type="button">
+                🌙 Dark Mode
+            </button>
+        </header>
+
+        <!-- Dashboard -->
+        <section class="dashboard">
+            <div class="stat-card">
+                <span>Total Tasks</span>
+                <h2 id="totalTasks">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>Pending</span>
+                <h2 id="pendingTasks">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>Completed</span>
+                <h2 id="completedTasks">0</h2>
+            </div>
+        </section>
+
+        <!-- Progress -->
+        <section class="progress-card">
+            <div class="progress-info">
+                <h3>Overall Progress</h3>
+                <span id="progressText">0%</span>
+            </div>
+            <div
+                class="progress-track"
+                role="progressbar"
+                aria-label="Task completion progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                id="progressTrack"
+            >
+                <div id="progressBar"></div>
+            </div>
+        </section>
+
+        <!-- Add / Edit Task Form -->
+        <section class="panel">
+            <h2 id="formTitle">Add a New Task</h2>
+
+            <form id="taskForm">
+                <label for="taskInput">Task Name</label>
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="What do you need to do?"
+                    maxlength="200"
+                    required
+                >
+
+                <div class="form-grid">
+                    <div>
+                        <label for="categoryInput">Category</label>
+                        <select id="categoryInput">
+                            <option value="Personal">Personal</option>
+                            <option value="Work">Work</option>
+                            <option value="Study">Study</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Health">Health</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="priorityInput">Priority</label>
+                        <select id="priorityInput">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="dueDateInput">Due Date (optional)</label>
+                <input type="date" id="dueDateInput">
+
+                <div class="form-actions">
+                    <button type="submit" id="saveBtn" class="primary-btn">
+                        + Add Task
+                    </button>
+                    <button
+                        type="button"
+                        id="cancelEditBtn"
+                        class="secondary-btn"
+                        hidden
+                    >
+                        Cancel Edit
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Search and Filters -->
+        <section class="panel">
+            <h2>Your Tasks</h2>
+
+            <label for="searchInput">Search tasks</label>
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search by task name or category..."
+            >
+
+            <div class="filter-section" aria-label="Filter tasks">
+                <button type="button" class="filter-btn active"
+                    data-filter="all">All</button>
+                <button type="button" class="filter-btn"
+                    data-filter="pending">Pending</button>
+                <button type="button" class="filter-btn"
+                    data-filter="completed">Completed</button>
+            </div>
+
+            <div class="category-filter">
+                <label for="categoryFilter">Filter by category</label>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Study">Study</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Health">Health</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <ul id="taskList"></ul>
+
+            <p id="emptyMessage" class="empty-message">
+                No tasks found. Add a new task to get started!
+            </p>
+
+            <div class="list-footer">
+                <span id="taskCount">0 tasks remaining</span>
+                <button type="button" id="clearCompletedBtn"
+                    class="clear-btn">
+                    Clear Completed
+                </button>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made with HTML, CSS & JavaScript 💜</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
